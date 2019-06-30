@@ -1,5 +1,3 @@
-"use strict";
-
 function cmpsvpRippleFxInit( el ) {
 	el.classList.add( "cmpsvp-rippleFx" );
 	el.addEventListener( "click", cmpsvpRippleFxExec, false );
@@ -30,3 +28,5 @@ function cmpsvpRippleFxExec( e ) {
 	setTimeout( () => el.classList.add( "cmpsvp-rippleFx-active" ), 100 );
 	el.dataset.rippleTimeoutId = setTimeout( cmpsvpRippleFxStop.bind( null, el ), 700 );
 }
+
+export default cmpsvpRippleFxInit;

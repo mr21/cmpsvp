@@ -1,4 +1,4 @@
-"use strict";
+import cmpsvpRippleFxInit from "../src/cmpsvp-rippleFx.js";
 
 class CMPSVPButton extends HTMLButtonElement  {
 	constructor() {
