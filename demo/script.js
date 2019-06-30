@@ -1,15 +1,11 @@
 "use strict";
 
-document.querySelector( "#main" ).onclick = e => {
-	console.log("main.onclick", e.target)
-};
+window.onload = () => {
+	const elMain = document.querySelector( "#main" ),
+		elBtns = document.querySelectorAll( ".cmpsvp-btn" );
 
-document.querySelectorAll( ".cmpsvp-btn" ).forEach( btn => {
-	btn.onclick = e => {
-		console.log( "btn.onclick" );
-		// btn.classList.add( "cmpsvp-btn-loading" );
-		setTimeout( () => {
-			btn.classList.remove( "cmpsvp-btn-loading" );
-		}, 2000 );
-	};
-} );
+	elMain.onclick = () => console.log( "main.onclick" );
+	elBtns.forEach( btn => {
+		btn.onclick = () => console.log( "btn.onclick" );
+	} );
+};
