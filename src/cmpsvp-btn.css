@@ -1,0 +1,97 @@
+:root {
+	--cmpsvp-btn-borderBottomWidth: 3px;
+	--cmpsvp-btn-pressDuration: .05s;
+	--cmpsvp-btn-colorDuration: .2s;
+	--cmpsvp-btn-rippleDuration: .7s;
+	--cmpsvp-btn-outline: 2px solid;
+	--cmpsvp-btn-outlineColor: rgba( 255, 255, 255, .2 );
+	--cmpsvp-btn-colorA: hsl( 0, 0%, 61% );
+	--cmpsvp-btn-colorB: hsl( 0, 0%, 42% );
+	--cmpsvp-btn-submit-colorA: hsl( 210, 100%, 56% );
+	--cmpsvp-btn-submit-colorB: hsl( 210, 100%, 40% );
+	--cmpsvp-btn-danger-colorA: hsl( 0, 68%, 53% );
+	--cmpsvp-btn-danger-colorB: hsl( 0, 68%, 42% );
+}
+
+@keyframes btn-loading-anim {
+	  0% { background-position: 0; }
+	100% { background-position: 28px; }
+}
+
+.cmpsvp-btn {
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+	border: var( --cmpsvp-btn-outline ) transparent;
+	outline: 0;
+	border-radius: 2px;
+	padding: .3em .7em;
+	color: #fff;
+	font-size: 14px;
+	font-family: "Montserrat", sans-serif;
+	text-decoration: none;
+	background-color: var( --cmpsvp-btn-colorA );
+	box-shadow: 0 var( --cmpsvp-btn-borderBottomWidth ) 0 var( --cmpsvp-btn-colorB );
+	cursor: pointer;
+	transition:
+		var( --cmpsvp-btn-colorDuration ) border-color,
+		var( --cmpsvp-btn-pressDuration ) box-shadow,
+		var( --cmpsvp-btn-pressDuration ) transform;
+}
+.cmpsvp-btn-disable {
+	color: rgba( 255, 255, 255, .6 );
+}
+.cmpsvp-btn-submit {
+	--cmpsvp-btn-colorA: var( --cmpsvp-btn-submit-colorA );
+	--cmpsvp-btn-colorB: var( --cmpsvp-btn-submit-colorB );
+}
+.cmpsvp-btn-danger {
+	--cmpsvp-btn-colorA: var( --cmpsvp-btn-danger-colorA );
+	--cmpsvp-btn-colorB: var( --cmpsvp-btn-danger-colorB );
+}
+
+.cmpsvp-btn:focus {
+	border-color: var( --cmpsvp-btn-outlineColor );
+}
+.cmpsvp-btn:active {
+	border-color: transparent;
+	transform: translate( 0, var( --cmpsvp-btn-borderBottomWidth ) );
+	box-shadow: 0 0 0 var( --cmpsvp-btn-colorB );
+}
+
+.cmpsvp-btn-text {
+	position: relative;
+	user-select: none;
+	pointer-events: none;
+}
+
+.cmpsvp-btn.cmpsvp-rippleFx-active .cmpsvp-rippleFx-circle {
+	transition-duration: var( --cmpsvp-btn-rippleDuration );
+}
+
+.cmpsvp-btn::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 10px,
+		rgba( 0, 0, 0, .1 ) 10px,
+		rgba( 0, 0, 0, .1 ) 20px
+	);
+	background-size: 28px;
+	opacity: 1;
+	animation: linear infinite .5s btn-loading-anim;
+	transition: var( --cmpsvp-btn-colorDuration );
+	transition-property; visibility, opacity;
+	visibility: hidden;
+	opacity: 0;
+}
+.cmpsvp-btn-loading::before {
+	visibility: visible;
+	opacity: 1;
+}
